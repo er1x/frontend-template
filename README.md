@@ -2,9 +2,9 @@
 
 A frontend project scaffold including:
 
-  - Stylus with nib
-  - Browserify
-  - Gulp tasks
+  - Stylus with nib. Normalized CSS base.
+  - Browserify.
+  - Gulp tasks.
 
 ## gulp tasks
 
