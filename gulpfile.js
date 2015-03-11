@@ -10,8 +10,8 @@ var gulp       = require('gulp'),
 
 
 /// Subtasks
-/// 
-/// 
+///
+///
 
 // JS
 gulp.task('js-dev', function () {
@@ -79,15 +79,15 @@ gulp.task('connect', function() {
     port: 9000
   });
 });
- 
+
 gulp.task('watch', function () {
   gulp.watch(['./app/**/*.html'], ['html-dev']);
-  gulp.watch(['./app/js/**/*'], ['js-dev']);
+  gulp.watch(['./app/js/**/*', '!./app/js/bundle.js'], ['js-dev']);
   gulp.watch(['./app/stylus/**/*'], ['stylus-dev']);
 });
 
 ///
-/// /Subtasks 
+/// /Subtasks
 
 
 
