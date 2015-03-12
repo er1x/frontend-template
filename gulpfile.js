@@ -3,6 +3,7 @@ var gulp       = require('gulp'),
     stripDebug = require('gulp-strip-debug'),
     connect    = require('gulp-connect'),
     rename     = require('gulp-rename'),
+    imagemin   = require('gulp-imagemin'),
     stylus     = require('gulp-stylus'),
     minifyHTML = require('gulp-minify-html'),
     nib        = require('nib'),
@@ -68,6 +69,11 @@ gulp.task('fonts', function () {
   gulp.src('app/fonts/**')
     .pipe(gulp.dest('./dist/fonts'));
 });
+gulp.task('images', function () {
+  gulp.src('app/img/**')
+    .pipe(imagemin())
+    .pipe(gulp.dest('./dist/img'));
+});
 /// /Misc
 
 
@@ -97,4 +103,4 @@ gulp.task('watch', function () {
 gulp.task('default', ['connect', 'js-dev', 'stylus-dev', 'watch']);
 
 // Optimize and build task
-gulp.task('build', ['js', 'stylus', 'html', 'fonts']);
+gulp.task('build', ['js', 'stylus', 'html', 'fonts', 'images']);

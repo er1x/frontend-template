@@ -16,5 +16,7 @@
     "nib": "^1.1.0"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "gulp-imagemin": "^2.2.1"
+  }
 }
