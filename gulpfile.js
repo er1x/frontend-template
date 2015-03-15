@@ -1,13 +1,15 @@
-var gulp       = require('gulp'),
-    browserify = require('gulp-browserify'),
-    stripDebug = require('gulp-strip-debug'),
-    connect    = require('gulp-connect'),
-    rename     = require('gulp-rename'),
-    imagemin   = require('gulp-imagemin'),
-    stylus     = require('gulp-stylus'),
-    minifyHTML = require('gulp-minify-html'),
-    nib        = require('nib'),
-    uglify     = require('gulp-uglify');
+var gulp        = require('gulp'),
+    browserify  = require('gulp-browserify'),
+    stripDebug  = require('gulp-strip-debug'),
+    connect     = require('gulp-connect'),
+    rename      = require('gulp-rename'),
+    imagemin    = require('gulp-imagemin'),
+    stylus      = require('gulp-stylus'),
+    minifyHTML  = require('gulp-minify-html'),
+    nib         = require('nib'),
+    uglify      = require('gulp-uglify'),
+    runSequence = require('run-sequence'),
+    del         = require('del');
 
 
 /// Subtasks
@@ -15,15 +17,16 @@ var gulp       = require('gulp'),
 ///
 
 // JS
-gulp.task('js-dev', function () {
-  gulp.src('app/js/main.js')
+gulp.task('js:dev', function () {
+  return gulp.src('app/js/main.js')
     .pipe(browserify())
     .pipe(rename('bundle.js'))
-    .pipe(gulp.dest('./app/js'));
+    .pipe(gulp.dest('./app/js'))
+    .pipe(connect.reload());
 });
 
-gulp.task('js', function () {
-  gulp.src('app/js/main.js')
+gulp.task('js:prod', function () {
+  return gulp.src('app/js/main.js')
     .pipe(browserify())
     .pipe(uglify({ compress: true }))
     .pipe(stripDebug())
@@ -34,15 +37,16 @@ gulp.task('js', function () {
 
 
 /// Stylus
-gulp.task('stylus-dev', function () {
-  gulp.src('app/stylus/main.styl')
+gulp.task('stylus:dev', function () {
+  return gulp.src('app/stylus/main.styl')
     .pipe(stylus({use: nib()}))
     .pipe(rename('bundle.css'))
-    .pipe(gulp.dest('app/css'));
+    .pipe(gulp.dest('app/css'))
+    .pipe(connect.reload());
 });
 
-gulp.task('stylus', function () {
-  gulp.src('app/stylus/main.styl')
+gulp.task('stylus:prod', function () {
+  return gulp.src('app/stylus/main.styl')
     .pipe(stylus({compress: true, use: nib()}))
     .pipe(rename('bundle.css'))
     .pipe(gulp.dest('./dist/css'));
@@ -51,13 +55,13 @@ gulp.task('stylus', function () {
 
 
 /// HTML
-gulp.task('html-dev', function () {
-  gulp.src('./app/**/*.html')
+gulp.task('html:dev', function () {
+  return gulp.src('./app/**/*.html')
     .pipe(connect.reload());
 });
 
-gulp.task('html', function () {
-  gulp.src('./app/*.html')
+gulp.task('html:prod', function () {
+  return gulp.src('./app/*.html')
   .pipe(minifyHTML())
   .pipe(gulp.dest('./dist'));
 });
@@ -66,13 +70,18 @@ gulp.task('html', function () {
 
 /// Misc
 gulp.task('fonts', function () {
-  gulp.src('app/fonts/**')
-    .pipe(gulp.dest('./dist/fonts'));
+  return gulp.src('app/fonts/**/*')
+    .pipe(gulp.dest('dist/fonts'));
 });
+
 gulp.task('images', function () {
-  gulp.src('app/img/**')
+  return gulp.src('app/img/**/*')
     .pipe(imagemin())
-    .pipe(gulp.dest('./dist/img'));
+    .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('clean', function(cb){
+  del(['dist'], cb());
 });
 /// /Misc
 
@@ -87,9 +96,9 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./app/**/*.html'], ['html-dev']);
-  gulp.watch(['./app/js/**/*', '!./app/js/bundle.js'], ['js-dev']);
-  gulp.watch(['./app/stylus/**/*'], ['stylus-dev']);
+  gulp.watch(['./app/**/*.html'], ['html:dev']);
+  gulp.watch(['./app/js/**/*', '!./app/js/bundle.js'], ['js:dev']);
+  gulp.watch(['./app/stylus/**/*'], ['stylus:dev']);
 });
 
 ///
@@ -99,8 +108,16 @@ gulp.task('watch', function () {
 
 // Main tasks
 
-// Serve task
-gulp.task('default', ['connect', 'js-dev', 'stylus-dev', 'watch']);
+// Development watch task
+gulp.task('default', ['connect', 'js:dev', 'stylus:dev', 'watch']);
 
 // Optimize and build task
-gulp.task('build', ['js', 'stylus', 'html', 'fonts', 'images']);
+gulp.task('build', function(callback) {
+  runSequence('clean',
+              'js:prod',
+              'stylus:prod', 
+              'html:prod', 
+              'fonts', 
+              'images',
+              callback);
+});
