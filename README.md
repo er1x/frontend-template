@@ -4,11 +4,11 @@ A frontend project scaffold including:
 
   - Stylus with nib. Normalized CSS base.
   - Browserify.
-  - Gulp tasks.
+  - Grunt tasks.
 
 ## gulp tasks
 
 ```bash
-gulp  # serve on localhost:9000
-gulp build # optimize and deploy on ./dist folder
+grunt  # build on ./build, serve and watch for changes on localhost:9000
+grunt build # optimize and deploy on ./release folder
 ```
