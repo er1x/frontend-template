@@ -6,7 +6,7 @@ A frontend project scaffold including:
   - Browserify.
   - Grunt tasks.
 
-## gulp tasks
+## Grunt tasks
 
 ```bash
 grunt  # build on ./build, serve and watch for changes on localhost:9000
