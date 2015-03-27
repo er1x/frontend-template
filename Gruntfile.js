@@ -79,6 +79,9 @@ module.exports = function(grunt) {
     },
 
     stylus: {
+      options: {
+        'include css': true
+      },
       build: {
         files: {
           'build/css/bundle.css': 'app/stylus/main.styl'
