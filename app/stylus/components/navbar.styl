@@ -1,0 +1,32 @@
+/*
+ Usage:
+ 
+  <nav class="navbar">
+    <ul>
+      <li class="navbar-item">
+        <a href="#">LINK</a>
+      </li>
+    </ul>
+  </nav>
+*/
+
+$navbar-height = 60px
+
+.navbar
+  background-color $color-navbar
+  material-shadow()
+  height $navbar-height
+  ul
+    height 100%
+    list-style none
+    margin 0
+    padding 0
+  .navbar-item
+    box-sizing border-box
+    display inline-block
+    font-size 2rem
+    height 100%
+    line-height $navbar-height
+    a
+      color $color-white
+      padding ($navbar-height / 4) 0px

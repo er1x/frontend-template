@@ -3,8 +3,11 @@
 A frontend project scaffold including:
 
   - Stylus with nib. Normalized CSS base.
-  - Browserify.
+  - A set of material design styles (this is a work in progress, disabled by default)
+  - Browserify with Handlebars transform.
   - Grunt tasks.
+
+This template is intended for a Backbone application.
 
 ## Grunt tasks
 

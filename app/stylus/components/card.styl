@@ -1,0 +1,34 @@
+/*
+  Usage:
+  
+    <div class="card card-header-colored">
+      <div class="card-header">
+        Card Title
+      </div>
+      <div class="card-content">
+        <p>this is the content</p>
+      </div>
+    </div>
+*/
+
+
+.card
+  background-color $color-card
+  border-radius 2px
+  material-shadow()
+  .card-header
+    font-size 1.5rem
+    color $color-text-headings
+    border-bottom 1px solid $color-divider
+    padding 1rem .5rem
+  .card-content
+    padding 1rem .5rem
+  &.card-colored
+    background-color $color-primary
+    color $color-white
+    .card-header
+      border-bottom 1px solid $color-divider-inverse
+  &.card-header-colored
+    .card-header
+      background-color $color-primary
+      color $color-white
