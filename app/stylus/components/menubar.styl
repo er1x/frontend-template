@@ -1,0 +1,51 @@
+/**
+  Usage:
+
+    <aside class="menubar">
+      <ul>
+        <li>menuitem</li>
+        <li>menuitem</li>
+        <li>menuitem</li>
+        <li>menuitem</li>
+        <li>menuitem</li>
+        <li>menuitem</li>
+        <li>menuitem</li>
+      </ul>
+    </aside>
+
+    <main class="content"> ... </main>
+
+**/
+
+.menubar
+  ul
+  .menubar-slider
+    background-color $color-menubar
+    color $color-grey-dark
+    material-shadow()
+    position fixed
+  ul
+    list-style none
+    margin 0
+    padding 0
+    width 220px
+  li
+    padding 20px 0 20px 10px
+    cursor pointer
+  .menubar-slider
+    display none
+    padding 1rem
+    top 50%
+
+.content
+  margin-left 220px
+  padding 1rem
+
+@media screen and (max-width: 640px)
+  .menubar
+    ul
+      display none
+    .menubar-slider
+      display block
+  .content
+    margin-left 0

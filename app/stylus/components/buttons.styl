@@ -1,0 +1,30 @@
+/**
+
+  Usage:
+
+    <a href="#" class="button"></a>
+    <a href="#" class="button"></a>
+
+**/
+
+.button
+  background-color $color-button-primary
+  border none
+  display inline-block
+  color $color-white
+  material-shadow()
+  overflow hidden
+  padding 15px
+  position relative
+  text-align center
+  text-transform uppercase
+
+.wave
+  animation wave .75s ease-out
+  background $color-button-wave
+  border-radius 100%
+  border none
+  opacity 0
+  pointer-events none
+  position absolute
+  transform scale(0.2)

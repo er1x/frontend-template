@@ -55,7 +55,7 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'app/', src: ['img/*'], dest: 'build'},
           {expand: true, cwd: 'app/', src: ['data/*'], dest: 'build'},
           {expand: true, cwd: 'app/', src: ['*.html'], dest: 'build'}
-        ]        
+        ]
       },
       release: {
         files: [
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
       },
       stylus: {
         files: ['app/stylus/**/*'],
-        tasks: ['stylus:build']        
+        tasks: ['stylus:build']
       },
       others: {
         files: ['app/*.html', 'app/fonts/**/*', 'app/img/**/*'],

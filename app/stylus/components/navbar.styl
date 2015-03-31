@@ -1,32 +1,56 @@
 /*
  Usage:
- 
+
   <nav class="navbar">
+    <div class="navbar-header">
+      Brand
+    </div>
     <ul>
-      <li class="navbar-item">
-        <a href="#">LINK</a>
+      <li>
+        <a href="#">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          One
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          Two
+        </a>
       </li>
     </ul>
   </nav>
+
 */
 
 $navbar-height = 60px
 
 .navbar
   background-color $color-navbar
+  color $color-text-primary
   material-shadow()
-  height $navbar-height
+  .navbar-header
+    float left
+    font-size 2rem
+    padding 10px
   ul
-    height 100%
+    display flex
+    flex-wrap wrap
     list-style none
     margin 0
     padding 0
-  .navbar-item
-    box-sizing border-box
-    display inline-block
-    font-size 2rem
-    height 100%
-    line-height $navbar-height
+  a
+    align-items flex-start
+    display flex
+    max-width 140px
+    padding 1.25rem 0.5rem
+    text-decoration none
+  &.navbar-colored
+    background-color $color-navbar-colored
+    .navbar-header
     a
       color $color-white
-      padding ($navbar-height / 4) 0px
+
