@@ -18,7 +18,8 @@
     "grunt-contrib-uglify": "^0.8.0",
     "grunt-contrib-watch": "^0.6.1",
     "handlebars": "^3.0.1",
-    "hbsfy": "^2.2.1"
+    "hbsfy": "^2.2.1",
+    "lost-grid": "^5.1.4"
   },
   "license": "MIT",
   "dependencies": {}

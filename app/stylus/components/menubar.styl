@@ -1,49 +1,82 @@
 /**
   Usage:
 
-    <aside class="menubar">
-      <ul>
-        <li>menuitem</li>
-        <li>menuitem</li>
-        <li>menuitem</li>
-        <li>menuitem</li>
-        <li>menuitem</li>
-        <li>menuitem</li>
-        <li>menuitem</li>
-      </ul>
-    </aside>
+  <aside class="menubar">
+    <ul class="menubar-list">
+      <li>
+        <a href="#">menuitem</a>
+      </li>
+      <li>
+        <a href="#" class="menubar-link--accordion">menuitem with sublinks</a>
+        <ul class="menubar-list--secondary">
+          <li><a href="#">subitem</a></li>
+          <li class="active"><a href="#">subitem active</a></li>
+          <li><a href="#">subitem</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">menuitem</a>
+      </li>
+      <li class="active">
+        <a href="#">active menuitem</a>
+      </li>
+    </ul>
+    <div class="menubar-slider">
+      <i>-></i>
+    </div>
+  </aside>
 
-    <main class="content"> ... </main>
+
+  <main class="content"> ... </main>
 
 **/
 
 .menubar
-  ul
+  a
+    color $color-menubar-text
+    display inline-block
+    padding 20px 0
+  .menubar-list
   .menubar-slider
     background-color $color-menubar
-    color $color-grey-dark
+    color $color-menubar-text
     material-shadow()
-    position fixed
+    position absolute
+    z-index 500
   ul
+  .menubar-list
     list-style none
+  .menubar-list
     margin 0
     padding 0
     width 220px
+  .menubar-list--secondary
+    max-height 0
+    transition all .5s linear
+    &.opened
+      max-height 200px
+      transition-delay 0
   li
-    padding 20px 0 20px 10px
-    cursor pointer
+    overflow hidden
+    text-align center
+    border 1px solid $color-divider-inverse
+    &.active
+      background-color $color-menubar-active
+      color $color-menubar-text-active
+      a
+        color $color-menubar-text-active
   .menubar-slider
+    bottom 2rem
     display none
     padding 1rem
-    top 50%
 
 .content
   margin-left 220px
-  padding 1rem
+  padding 1rem 1rem 0 1rem
 
 @media screen and (max-width: 640px)
   .menubar
-    ul
+    .menubar-list
       display none
     .menubar-slider
       display block

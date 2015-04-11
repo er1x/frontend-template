@@ -1,0 +1,53 @@
+/**
+  Usage:
+
+
+  Requires buttons component
+**/
+
+.form
+
+  .form-element
+    margin-top 40px
+    padding 0px 20px
+    position relative
+
+  input
+    margin-bottom 10px
+
+  input[type="password"]
+  input[type="text"]
+    background $color-white
+    border 0px
+    border-bottom 1px solid $color-primary
+    padding 5px 0px
+    width 100%
+
+  label
+    color $color-text-secondary
+    font-size 20px
+    left 20px
+    position absolute
+    top 0px
+    transform-origin top left
+    transition transform ease-out .2s
+
+  input:focus
+    outline 0
+    border-bottom 2px solid $color-primary
+
+  input:focus ~ label, input:valid ~ label
+    color $color-primary
+    transform scale(0.8) translate(-10px,-33px)
+
+  input[type="submit"]
+    @extend .button
+    border 1px solid transparent
+    cursor pointer
+    padding 15px 0px
+    transition all ease-out .2s
+    width 100%
+
+  input[type="submit"]:hover
+    background-color $color-secondary-dark
+    transform scale(0.95)

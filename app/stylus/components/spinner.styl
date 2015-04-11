@@ -1,0 +1,21 @@
+/*
+  Usage:
+
+  <div class="spinner"></div>
+*/
+
+.spinner
+  animation rotation $spinner-speed infinite linear
+  border $spinner-border-width solid $spinner-track-color
+  border-radius 100%
+  border-top $spinner-border-width solid $spinner-track-piece-color
+  height $spinner-size
+  margin 0 auto
+  position relative
+  width $spinner-size
+
+@keyframes rotation
+  from
+    transform rotate(0deg)
+  to
+    transform rotate(359deg)

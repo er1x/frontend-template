@@ -11,4 +11,15 @@ for size in 1 2 3 4 5
 
 a
   color $color-text-primary
+  outline 0
   text-decoration initial
+
+
+if $sticky-footer
+  body
+    display flex
+    flex-direction column
+    min-height 100vh
+  .footer
+    bottom 0
+    position absolute

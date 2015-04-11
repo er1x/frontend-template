@@ -1,0 +1,32 @@
+
+.footer
+  background-color $color-footer
+  color $color-text-inverse
+  margin-top 1rem
+  material-shadow()
+  padding 50px 50px 0px 50px
+  a
+    color $color-text-inverse
+  .footer-content
+    display inline-block
+    width 80%
+  .footer-links
+    display inline-block
+    list-style none
+    padding-left 0
+    text-align right
+    vertical-align top
+    width 15%
+  .footer-copyright
+    background-color $color-footer-copyright
+    border .5px solid $color-divider
+    padding 25px
+
+@media screen and (max-width: 640px)
+  .footer
+    .footer-content
+      width 100%
+    .footer-links
+      float none
+      padding-top 0
+      text-align center
